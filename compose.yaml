@@ -1,0 +1,15 @@
+services:
+  notes:
+    build:
+      context: .
+    container_name: notes
+    volumes:
+      - notes:/opt/app/notes
+    ports:
+      - 5173:5173
+    restart: always
+    networks:
+      - notes
+networks:
+  notes:
+    driver: bridge

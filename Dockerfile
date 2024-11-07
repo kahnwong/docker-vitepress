@@ -10,10 +10,12 @@ FROM node:20-alpine AS deploy
 
 WORKDIR /opt/app
 
-COPY . .
 COPY --from=build /opt/build/package.json ./
 COPY --from=build /opt/build/node_modules ./node_modules
+COPY .vitepress/config.mts .vitepress/config.mts
+COPY index.md .
+COPY notes ./notes
 
 EXPOSE 5173
 
-CMD [ "yarn", "dev", "-h", "0.0.0.0" ]
+CMD [ "yarn", "dev", "--host", "0.0.0.0" ]
