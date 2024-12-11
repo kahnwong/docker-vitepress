@@ -1,4 +1,4 @@
-FROM node:20 AS build
+FROM node:22 AS build
 
 WORKDIR /opt/build
 
@@ -6,7 +6,7 @@ COPY package.json .
 COPY yarn.lock .
 RUN yarn install
 
-FROM node:20-alpine AS deploy
+FROM node:22-alpine AS deploy
 
 WORKDIR /opt/app
 
